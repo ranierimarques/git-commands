@@ -24,6 +24,7 @@ const Section = styled('section', {
   alignItems: 'center',
   justifyContent: 'center',
   margin: '80px 0',
+  width: '100%',
 })
 
 const Home: NextPage = () => {

@@ -1,6 +1,12 @@
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
+import { Sidebar } from 'src/components/sidebar/sidebar'
 import { globalStyles } from 'src/styles/globals'
+import { styled } from 'stitches.config'
+
+const Wrapper = styled('div', {
+  display: 'flex',
+})
 
 function MyApp({ Component, pageProps }: AppProps) {
   globalStyles()
@@ -43,7 +49,10 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width" />
       </Head>
-      <Component {...pageProps} />
+      <Wrapper>
+        <Sidebar />
+        <Component {...pageProps} />
+      </Wrapper>
     </>
   )
 }
