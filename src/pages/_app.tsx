@@ -8,6 +8,20 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
+        <link
+          rel="preload"
+          href="/fonts/ibm-plex-sans-var.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/jet-brains-mono-var.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link
           rel="icon"
