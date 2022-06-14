@@ -6,4 +6,10 @@ export const globalStyles = globalCss({
     padding: 0,
     boxSizing: 'border-box',
   },
+  body: {
+    background: '#111111',
+  },
+  html: {
+    colorScheme: 'dark',
+  },
 })
