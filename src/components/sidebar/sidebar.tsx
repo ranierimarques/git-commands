@@ -21,6 +21,12 @@ const IconContainer = styled('div', {
   padding: '20px',
 })
 
+const NavGroup = styled('ul', {
+  '& + ul': {
+    marginTop: 20,
+  },
+})
+
 const Title = styled('h4', {
   color: '#FFFFFF',
   fontFamily: 'IBM Plex Sans',
@@ -55,10 +61,19 @@ const StyledLink = styled('a', {
   },
 })
 
-const routes = [
-  { href: '/', name: 'Começando agora' },
-  { href: '/first-commands', name: 'Primeiros comandos' },
-  { href: '/understand-git', name: 'Compreendendo o git' },
+const routesGroup = [
+  {
+    title: 'Git',
+    routes: [{ href: '/', name: 'Comandos' }],
+  },
+  // {
+  //   title: 'GitHub',
+  //   routes: [{ href: '/github', name: 'Dicas' }],
+  // },
+  // {
+  //   title: 'Conventional Commits',
+  //   routes: [{ href: '/conventional-commits', name: 'Tipos de commits' }],
+  // },
 ]
 
 export function Sidebar() {
@@ -69,16 +84,18 @@ export function Sidebar() {
       <IconContainer>
         <GitIcon />
       </IconContainer>
-      <ul>
-        <Title>Inicio</Title>
-        {routes.map(route => (
-          <li key={route.name}>
-            <Link href={route.href} passHref>
-              <StyledLink active={pathname === route.href}>{route.name}</StyledLink>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      {routesGroup.map(group => (
+        <NavGroup key={group.title}>
+          <Title>{group.title}</Title>
+          {group.routes.map(route => (
+            <li key={route.name}>
+              <Link href={route.href} passHref>
+                <StyledLink active={pathname === route.href}>{route.name}</StyledLink>
+              </Link>
+            </li>
+          ))}
+        </NavGroup>
+      ))}
     </Container>
   )
 }

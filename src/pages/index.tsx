@@ -1,10 +1,27 @@
+import { references } from 'data/references'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { Code } from 'src/components/code'
-import { commands } from 'src/mocks/title-code'
 import { styled } from 'stitches.config'
 
-const Title = styled('h2', {
+const H1 = styled('h1', {
+  color: '#ffffff',
+  fontFamily: 'IBM Plex Sans',
+  fontSize: '48px',
+  lineHeight: '48px',
+  fontWeight: '700',
+  marginBottom: '24px',
+})
+
+const H2 = styled('h2', {
+  color: '#fafafa',
+  fontFamily: 'IBM Plex Sans',
+  fontSize: '24px',
+  lineHeight: '32px',
+  fontWeight: '700',
+})
+
+const H3 = styled('h3', {
   color: '#EAEAEA',
   fontFamily: 'IBM Plex Sans',
   fontSize: '16px',
@@ -17,14 +34,13 @@ const Wrapper = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   gap: '24px',
+  '& + &': {
+    marginTop: 48,
+  },
 })
 
 const Section = styled('section', {
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  margin: '80px 0',
-  width: '100%',
+  margin: '65px 0 80px 60px',
 })
 
 const Home: NextPage = () => {
@@ -34,14 +50,18 @@ const Home: NextPage = () => {
         <title>Comandos Git</title>
       </Head>
 
-      <Wrapper>
-        {commands.map((command, index) => (
-          <div key={index}>
-            <Title>{command.title}</Title>
-            <Code>{command.code}</Code>
-          </div>
-        ))}
-      </Wrapper>
+      <H1>Comandos</H1>
+      {references.map(reference => (
+        <Wrapper key={reference.title}>
+          <H2>{reference.title}</H2>
+          {reference.commands.map((command, index) => (
+            <div key={index}>
+              <H3>{command.title}</H3>
+              <Code>{command.code}</Code>
+            </div>
+          ))}
+        </Wrapper>
+      ))}
     </Section>
   )
 }
