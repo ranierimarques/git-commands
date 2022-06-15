@@ -19,6 +19,7 @@ const H2 = styled('h2', {
   fontSize: '24px',
   lineHeight: '32px',
   fontWeight: '700',
+  marginBottom: '8px',
 })
 
 const H3 = styled('h3', {
@@ -27,13 +28,13 @@ const H3 = styled('h3', {
   fontSize: '16px',
   lineHeight: '28px',
   fontWeight: '400',
-  marginBottom: '10px',
+  marginBottom: '8px',
 })
 
 const Wrapper = styled('div', {
   display: 'flex',
   flexDirection: 'column',
-  gap: '24px',
+  gap: '16px',
   '& + &': {
     marginTop: 48,
   },

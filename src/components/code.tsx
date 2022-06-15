@@ -5,16 +5,17 @@ type codeProps = {
 }
 
 const Wrapper = styled('div', {
-  background: '#1A1A1A',
+  background: 'hsl(0, 0%, 12%)',
   borderRadius: '4px',
   padding: '8px 12px',
   width: 'fit-content',
 
   fontFamily: 'JetBrains Mono',
-  fontSize: '16px',
-  lineHeight: '24px',
+  fontSize: '14px',
+  lineHeight: '20px',
   fontWeight: '400',
   color: '#ffffff',
+  boxShadow: '0 8px 15px rgb(0 0 0 / 15%)',
 })
 
 export function Code({ children }: codeProps) {
