@@ -1,7 +1,7 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { styled } from 'stitches.config'
+import { GitIcon } from './svgs'
 
 const Container = styled('div', {
   position: 'sticky',
@@ -17,7 +17,7 @@ const Container = styled('div', {
   },
 })
 
-const ImageContainer = styled('div', {
+const IconContainer = styled('div', {
   padding: '20px',
 })
 
@@ -66,9 +66,9 @@ export function Sidebar() {
 
   return (
     <Container>
-      <ImageContainer>
-        <Image src="/favicon/favicon-32x32.png" width={32} height={32} alt="Git Ícone" />
-      </ImageContainer>
+      <IconContainer>
+        <GitIcon />
+      </IconContainer>
       <ul>
         <Title>Inicio</Title>
         {routes.map(route => (
