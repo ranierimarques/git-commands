@@ -58,7 +58,11 @@ const Home: NextPage = () => {
           {reference.commands.map((command, index) => (
             <div key={index}>
               <H3>{command.title}</H3>
-              <Code>{command.code}</Code>
+              {Array.isArray(command.code) ? (
+                <Code>{command.code.map(code => code)}</Code>
+              ) : (
+                <Code>{command.code}</Code>
+              )}
             </div>
           ))}
         </Wrapper>

@@ -1,3 +1,5 @@
+import { Tooltip } from 'src/components/tooltip'
+
 export const references = [
   {
     title: 'Setup e configuração',
@@ -21,7 +23,12 @@ export const references = [
       },
       {
         title: 'Clonar um repositório online.',
-        code: 'git clone [URL | SSH] [NOME DO REPOSITÓRIO]',
+        code: [
+          'git clone [URL | SSH] ',
+          <Tooltip key={2} content="Omitir para salvar com o nome do repositório atual">
+            [NOME DO REPOSITÓRIO]
+          </Tooltip>,
+        ],
       },
     ],
   },

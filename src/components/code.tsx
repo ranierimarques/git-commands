@@ -1,7 +1,7 @@
 import { styled } from 'stitches.config'
 
 type codeProps = {
-  children: string
+  children: any
 }
 
 const Wrapper = styled('div', {
