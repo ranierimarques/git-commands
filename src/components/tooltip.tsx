@@ -9,19 +9,20 @@ const scaleIn = keyframes({
 })
 
 const StyledContent = styled(TooltipPrimitive.Content, {
-  background: 'hsl(0, 0%, 15%)',
-  fill: 'hsl(0, 0%, 15%)',
+  background: '#2E3338',
+  fill: '#2E3338',
   transformOrigin: 'var(--radix-tooltip-content-transform-origin)',
   animation: `${scaleIn} 0.2s ease-out forwards`,
 
   fontFamily: 'IBM Plex Sans',
-  fontSize: '16px',
-  lineHeight: '16px',
+  fontSize: '14px',
+  lineHeight: '100%',
   fontWeight: '400',
   color: 'white',
 
   padding: '12px 14px',
   borderRadius: '4px',
+  filter: 'drop-shadow(0px 8px 15px rgba(0, 0, 0, 0.15))',
 })
 
 const StyledTrigger = styled(TooltipPrimitive.Trigger, {
