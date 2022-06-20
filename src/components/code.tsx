@@ -3,6 +3,7 @@ import { styled } from 'stitches.config'
 type codeProps = {
   children: any
   example?: boolean
+  visible?: boolean
 }
 
 const Wrapper = styled('div', {
@@ -25,6 +26,11 @@ const Wrapper = styled('div', {
         flexDirection: 'column',
         gap: '16px',
         padding: '12px',
+      },
+    },
+    visible: {
+      false: {
+        display: 'none',
       },
     },
   },
