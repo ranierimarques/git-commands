@@ -32,16 +32,21 @@ const StyledTrigger = styled(TooltipPrimitive.Trigger, {
   fontWeight: '400',
   color: 'white',
   '&:focus': {
-    outline: '1px dashed #4465DB',
-    outlineOffset: '1.5px',
+    // outline: '1px dashed #4465DB',
+    // outlineOffset: '1.5px',
   },
 })
 
-export function Tooltip({ children, content, ...props }: tooltipProps) {
+export function Tooltip({ children, content, icon, ...props }: tooltipProps) {
   return (
-    <TooltipPrimitive.Root delayDuration={200}>
+    <TooltipPrimitive.Root delayDuration={icon ? 0 : 200}>
       <StyledTrigger>{children}</StyledTrigger>
-      <StyledContent sideOffset={14} side="top" align="center" {...props}>
+      <StyledContent
+        sideOffset={icon ? 8 : 14}
+        side={icon ? 'right' : 'top'}
+        align="center"
+        {...props}
+      >
         {content}
         <TooltipPrimitive.Arrow width={18} height={8} />
       </StyledContent>

@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { styled } from 'stitches.config'
 import { Code } from '../code'
-import { ExampleIcon } from '../commands/svgs'
+import { Tooltip } from '../tooltip'
+import { ExampleIcon, InfoIcon } from './svgs'
 
 type snippetsProps = {
   command: {
@@ -11,6 +12,7 @@ type snippetsProps = {
       description: (string | JSX.Element)[]
       code: (string | JSX.Element)[]
     }[]
+    information: (string | JSX.Element)[][]
   }
 }
 
@@ -76,6 +78,16 @@ const Description = styled('span', {
   color: '#8F95A9',
 })
 
+const InfoList = styled('li', {
+  fontFamily: 'JetBrains Mono',
+  fontSize: '12px',
+  lineHeight: '18px',
+  fontWeight: '500',
+  color: '#ffffff',
+  listStyle: 'inside',
+  marginLeft: '4px',
+})
+
 const Codes = styled('div', {
   display: 'flex',
   flexDirection: 'column',
@@ -83,7 +95,8 @@ const Codes = styled('div', {
 })
 
 export function Snippets({ command }: snippetsProps) {
-  const [isVisible, setIsVisible] = useState(false)
+  const [isInformationVisible, setIsInformationVisible] = useState(false)
+  const [isExampleVisible, setIsExampleVisible] = useState(false)
 
   return (
     <Codes key={command.title}>
@@ -92,14 +105,29 @@ export function Snippets({ command }: snippetsProps) {
         <Code>{command.code.map(code => code)}</Code>
         <IconsWrapper>
           {command.examples && (
-            <Icon active={isVisible} onClick={() => setIsVisible(!isVisible)}>
-              <ExampleIcon />
-            </Icon>
+            <Tooltip content="Exemplos" icon>
+              <Icon
+                active={isExampleVisible}
+                onClick={() => setIsExampleVisible(!isExampleVisible)}
+              >
+                <ExampleIcon />
+              </Icon>
+            </Tooltip>
+          )}
+          {command.information && (
+            <Tooltip content="Informações adicionais" icon>
+              <Icon
+                active={isInformationVisible}
+                onClick={() => setIsInformationVisible(!isInformationVisible)}
+              >
+                <InfoIcon />
+              </Icon>
+            </Tooltip>
           )}
         </IconsWrapper>
       </CodeWrapper>
-      {command.examples && (
-        <Code example visible={isVisible}>
+      {isExampleVisible && (
+        <Code example>
           {command.examples.map((example, index) => (
             <div key={index}>
               <Description>
@@ -107,6 +135,13 @@ export function Snippets({ command }: snippetsProps) {
               </Description>
               {example.code.map(code => code)}
             </div>
+          ))}
+        </Code>
+      )}
+      {isInformationVisible && (
+        <Code as="ul" info>
+          {command.information.map((information, index) => (
+            <InfoList key={index}>{information.map(info => info)}</InfoList>
           ))}
         </Code>
       )}

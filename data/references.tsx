@@ -9,6 +9,7 @@ type referencesTypes = {
       description: (string | JSX.Element)[]
       code: (string | JSX.Element)[]
     }[]
+    information: (string | JSX.Element)[][]
   }[]
 }[]
 
@@ -53,18 +54,56 @@ export const references = [
     title: 'Versionamento básico',
     commands: [
       {
-        title: 'Preparar todas as mudanças para commit.',
-        code: ['git add .'],
+        title: 'Preparar as mudanças para commit.',
+        code: [
+          'git ',
+          <Tooltip
+            key={0}
+            content="Comando para adicionar um ou mais arquivos em staging"
+          >
+            add
+          </Tooltip>,
+          ' ',
+          <Tooltip key={1} content="Nome de um ou mais arquivos">
+            arquivo.txt
+          </Tooltip>,
+        ],
         examples: [
           {
-            description: ['# Adicionar mais de 1 arquivo'],
-            code: ['git add arquivo1.txt arquivo2.txt'],
+            description: ['# Adicionando vários arquivos'],
+            code: [
+              'git ',
+              <Tooltip
+                key={0}
+                content="Comando para adicionar um ou mais arquivos em staging"
+              >
+                add
+              </Tooltip>,
+              ' ',
+              <Tooltip key={1} content="Nome completo do arquivo com sua extensão">
+                arquivo1.txt
+              </Tooltip>,
+              ' ',
+              <Tooltip key={2} content="Nome completo do arquivo com sua extensão">
+                arquivo2.txt
+              </Tooltip>,
+            ],
           },
           {
-            description: [
-              '# Preparar todas as mudanças para commit e colocar em stagging',
+            description: ['# Adicionando todos os arquivos'],
+            code: [
+              'git ',
+              <Tooltip
+                key={0}
+                content="Comando para adicionar um ou mais arquivos em staging"
+              >
+                add
+              </Tooltip>,
+              ' ',
+              <Tooltip key={1} content="Comando para selecionar todos os arquivos">
+                .
+              </Tooltip>,
             ],
-            code: ['git add .'],
           },
         ],
       },
@@ -83,6 +122,12 @@ export const references = [
       {
         title: 'Criar um commit com uma mensagem.',
         code: ['git commit -m "Mensagem"'],
+        information: [
+          ['Sem usar a flag -m um editor será aberto para digitar a mensagem de commit.'],
+          [
+            'A mensagem é obrigatória, tentar enviar um commit sem mensagem não funcionará.',
+          ],
+        ],
       },
       {
         title: 'Mover um arquivo de Staged para Modified/Untrack.',
