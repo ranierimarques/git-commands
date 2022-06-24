@@ -19,6 +19,7 @@ const StyledContent = styled(TooltipPrimitive.Content, {
   lineHeight: '100%',
   fontWeight: '400',
   color: 'white',
+  whiteSpace: 'pre-wrap',
 
   padding: '12px 14px',
   borderRadius: '4px',

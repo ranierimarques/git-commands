@@ -30,7 +30,7 @@ export function Commands() {
         <Wrapper key={reference.title}>
           <Title>{reference.title}</Title>
           {reference.commands.map(command => (
-            <Snippets key={command.title} command={command} />
+            <Snippets key={command.description} command={command} />
           ))}
         </Wrapper>
       ))}

@@ -2,17 +2,18 @@ import { useState } from 'react'
 import { styled } from 'stitches.config'
 import { Code } from '../code'
 import { Tooltip } from '../tooltip'
-import { ExampleIcon, InfoIcon } from './svgs'
+import { ExampleIcon, InfoIcon, LampIcon } from './svgs'
 
 type snippetsProps = {
   command: {
-    title: string
-    code: (string | JSX.Element)[]
-    examples: {
+    description: string
+    code: JSX.Element
+    examples?: {
       description: (string | JSX.Element)[]
       code: (string | JSX.Element)[]
     }[]
-    information: (string | JSX.Element)[][]
+    information?: (string | JSX.Element)[][]
+    hints?: (string | JSX.Element)[][]
   }
 }
 
@@ -88,6 +89,14 @@ const InfoList = styled('li', {
   marginLeft: '4px',
 })
 
+const HintList = styled('li', {
+  fontFamily: 'JetBrains Mono',
+  fontSize: '12px',
+  lineHeight: '18px',
+  fontWeight: '500',
+  color: '#ffffff',
+})
+
 const Codes = styled('div', {
   display: 'flex',
   flexDirection: 'column',
@@ -95,14 +104,15 @@ const Codes = styled('div', {
 })
 
 export function Snippets({ command }: snippetsProps) {
-  const [isInformationVisible, setIsInformationVisible] = useState(false)
   const [isExampleVisible, setIsExampleVisible] = useState(false)
+  const [isInformationVisible, setIsInformationVisible] = useState(false)
+  const [isHintsVisible, setIsHintsVisible] = useState(false)
 
   return (
-    <Codes key={command.title}>
-      <H3>{command.title}</H3>
+    <Codes key={command.description}>
+      <H3>{command.description}</H3>
       <CodeWrapper>
-        <Code>{command.code.map(code => code)}</Code>
+        <Code>{command.code}</Code>
         <IconsWrapper>
           {command.examples && (
             <Tooltip content="Exemplos" icon>
@@ -124,24 +134,39 @@ export function Snippets({ command }: snippetsProps) {
               </Icon>
             </Tooltip>
           )}
+          {command.hints && (
+            <Tooltip content="Dicas" icon>
+              <Icon
+                active={isHintsVisible}
+                onClick={() => setIsHintsVisible(!isHintsVisible)}
+              >
+                <LampIcon />
+              </Icon>
+            </Tooltip>
+          )}
         </IconsWrapper>
       </CodeWrapper>
       {isExampleVisible && (
         <Code example>
-          {command.examples.map((example, index) => (
+          {command.examples?.map((example, index) => (
             <div key={index}>
-              <Description>
-                {example.description.map(description => description)}
-              </Description>
-              {example.code.map(code => code)}
+              <Description>{example.description}</Description>
+              {example.code}
             </div>
           ))}
         </Code>
       )}
       {isInformationVisible && (
         <Code as="ul" info>
-          {command.information.map((information, index) => (
-            <InfoList key={index}>{information.map(info => info)}</InfoList>
+          {command.information?.map((information, index) => (
+            <InfoList key={index}>{information}</InfoList>
+          ))}
+        </Code>
+      )}
+      {isHintsVisible && (
+        <Code as="ul" info>
+          {command.hints?.map((hint, index) => (
+            <HintList key={index}>{hint}</HintList>
           ))}
         </Code>
       )}
