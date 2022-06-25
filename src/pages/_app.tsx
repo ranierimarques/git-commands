@@ -1,7 +1,7 @@
 import { Sidebar } from '@components'
+import { globalStyles } from '@styles/globals'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-import { globalStyles } from 'src/styles/globals'
 import { styled } from 'stitches.config'
 
 const Wrapper = styled('div', {
