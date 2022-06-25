@@ -1,7 +1,6 @@
-import { Code, CodeComposer, Tooltip } from '@components'
+import { Code, CodeComposer, Icons } from '@components'
 import { useState } from 'react'
 import * as S from './snippets.styles'
-import { ExampleIcon, InfoIcon, LampIcon } from './svgs'
 
 type snippetsProps = {
   command: {
@@ -17,9 +16,11 @@ type snippetsProps = {
 }
 
 export function Snippets({ command }: snippetsProps) {
-  const [isExampleVisible, setIsExampleVisible] = useState(false)
-  const [isInformationVisible, setIsInformationVisible] = useState(false)
-  const [isHintsVisible, setIsHintsVisible] = useState(false)
+  const [isVisible, setIsVisible] = useState({
+    examples: false,
+    information: false,
+    hints: false,
+  })
 
   return (
     <S.Codes>
@@ -28,40 +29,9 @@ export function Snippets({ command }: snippetsProps) {
         <Code>
           <CodeComposer compose={command.code} />
         </Code>
-        <S.IconsWrapper>
-          {command.examples && (
-            <Tooltip content="Exemplos" icon>
-              <S.Icon
-                active={isExampleVisible}
-                onClick={() => setIsExampleVisible(!isExampleVisible)}
-              >
-                <ExampleIcon />
-              </S.Icon>
-            </Tooltip>
-          )}
-          {command.information && (
-            <Tooltip content="Informações adicionais" icon>
-              <S.Icon
-                active={isInformationVisible}
-                onClick={() => setIsInformationVisible(!isInformationVisible)}
-              >
-                <InfoIcon />
-              </S.Icon>
-            </Tooltip>
-          )}
-          {command.hints && (
-            <Tooltip content="Dicas" icon>
-              <S.Icon
-                active={isHintsVisible}
-                onClick={() => setIsHintsVisible(!isHintsVisible)}
-              >
-                <LampIcon />
-              </S.Icon>
-            </Tooltip>
-          )}
-        </S.IconsWrapper>
+        <Icons command={command} isVisible={isVisible} setIsVisible={setIsVisible} />
       </S.CodeWrapper>
-      {isExampleVisible && (
+      {isVisible.examples && (
         <Code example>
           {command.examples?.map((example, index) => (
             <div key={index}>
@@ -71,14 +41,14 @@ export function Snippets({ command }: snippetsProps) {
           ))}
         </Code>
       )}
-      {isInformationVisible && (
+      {isVisible.information && (
         <Code as="ul" info>
           {command.information?.map((information, index) => (
             <S.InfoList key={index}>{information}</S.InfoList>
           ))}
         </Code>
       )}
-      {isHintsVisible && (
+      {isVisible.hints && (
         <Code as="ul" info>
           {command.hints?.map((hint, index) => (
             <S.HintList key={index}>{hint}</S.HintList>
