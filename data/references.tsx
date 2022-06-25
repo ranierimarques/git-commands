@@ -445,7 +445,7 @@ export const references = [
       },
       {
         description: 'Listar as tag existentes.',
-        code: ['git tag'],
+        code: [['git tag']],
         examples: [
           {
             description: 'Criar uma tag',
