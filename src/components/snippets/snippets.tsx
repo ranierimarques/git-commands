@@ -1,5 +1,5 @@
+import { Code, CodeComposer, Tooltip } from '@components'
 import { useState } from 'react'
-import { Code, CodeComposer, Tooltip } from 'src/components'
 import { styled } from 'stitches.config'
 import { ExampleIcon, InfoIcon, LampIcon } from './svgs'
 
@@ -108,7 +108,7 @@ export function Snippets({ command }: snippetsProps) {
   const [isHintsVisible, setIsHintsVisible] = useState(false)
 
   return (
-    <Codes key={command.description}>
+    <Codes>
       <H3>{command.description}</H3>
       <CodeWrapper>
         <Code>

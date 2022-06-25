@@ -1,6 +1,6 @@
+import { Sidebar } from '@components'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-import { Sidebar } from 'src/components'
 import { globalStyles } from 'src/styles/globals'
 import { styled } from 'stitches.config'
 

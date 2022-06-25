@@ -29,8 +29,8 @@ export function Commands() {
       {references.map(reference => (
         <Wrapper key={reference.title}>
           <Title>{reference.title}</Title>
-          {reference.commands.map(command => (
-            <Snippets key={command.description} command={command} />
+          {reference.commands.map((command, index) => (
+            <Snippets key={index} command={command} />
           ))}
         </Wrapper>
       ))}
