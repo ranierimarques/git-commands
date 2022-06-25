@@ -1,12 +1,8 @@
 import { Sidebar } from '@components'
 import { globalStyles } from '@styles/globals'
+import * as S from '@styles/_app'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-import { styled } from 'stitches.config'
-
-const Wrapper = styled('div', {
-  display: 'flex',
-})
 
 function MyApp({ Component, pageProps }: AppProps) {
   globalStyles()
@@ -49,10 +45,10 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width" />
       </Head>
-      <Wrapper>
+      <S.Wrapper>
         <Sidebar />
         <Component {...pageProps} />
-      </Wrapper>
+      </S.Wrapper>
     </>
   )
 }
