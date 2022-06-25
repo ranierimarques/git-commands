@@ -1,5 +1,5 @@
 import { Fragment } from 'react'
-import { Tooltip } from '../tooltip'
+import { Tooltip } from 'src/components'
 
 type codeComposerProps = {
   compose: string[][]

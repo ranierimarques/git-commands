@@ -1,6 +1,6 @@
 import { references } from 'data/references'
+import { Snippets } from 'src/components'
 import { styled } from 'stitches.config'
-import { Snippets } from '../snippets/snippets'
 
 const Container = styled('div', {
   display: 'flex',

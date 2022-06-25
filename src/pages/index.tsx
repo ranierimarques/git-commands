@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { Commands } from 'src/components/commands/commands'
+import { Commands } from 'src/components'
 import { styled } from 'stitches.config'
 
 const Title = styled('h1', {

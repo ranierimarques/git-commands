@@ -1,16 +1,15 @@
 import { useState } from 'react'
+import { Code, CodeComposer, Tooltip } from 'src/components'
 import { styled } from 'stitches.config'
-import { Code } from '../code'
-import { Tooltip } from '../tooltip'
 import { ExampleIcon, InfoIcon, LampIcon } from './svgs'
 
 type snippetsProps = {
   command: {
     description: string
-    code: JSX.Element
+    code: string[][]
     examples?: {
       description: (string | JSX.Element)[]
-      code: (string | JSX.Element)[]
+      code: string[][]
     }[]
     information?: (string | JSX.Element)[][]
     hints?: (string | JSX.Element)[][]
@@ -112,7 +111,9 @@ export function Snippets({ command }: snippetsProps) {
     <Codes key={command.description}>
       <H3>{command.description}</H3>
       <CodeWrapper>
-        <Code>{command.code}</Code>
+        <Code>
+          <CodeComposer compose={command.code} />
+        </Code>
         <IconsWrapper>
           {command.examples && (
             <Tooltip content="Exemplos" icon>
@@ -151,7 +152,7 @@ export function Snippets({ command }: snippetsProps) {
           {command.examples?.map((example, index) => (
             <div key={index}>
               <Description>{example.description}</Description>
-              {example.code}
+              <CodeComposer compose={example.code} />
             </div>
           ))}
         </Code>
