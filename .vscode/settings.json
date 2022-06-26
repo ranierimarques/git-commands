@@ -13,5 +13,6 @@
     "shortlog",
     "svgs",
     "Versionamento"
-  ]
+  ],
+  "editor.acceptSuggestionOnEnter": "off"
 }

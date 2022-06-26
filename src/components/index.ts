@@ -1,3 +1,4 @@
+export { Additional } from './additional/additional'
 export { CodeComposer } from './code-composer/code-composer'
 export { Code } from './code/code'
 export { Commands } from './commands/commands'
