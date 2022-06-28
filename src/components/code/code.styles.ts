@@ -28,6 +28,7 @@ export const Wrapper = styled('div', {
         flexDirection: 'column',
         gap: '4px',
         padding: '12px',
+        paddingRight: '18px',
       },
     },
   },

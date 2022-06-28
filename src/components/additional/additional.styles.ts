@@ -10,19 +10,19 @@ export const Description = styled('span', {
 })
 
 export const InfoList = styled('li', {
-  fontFamily: 'JetBrains Mono',
-  fontSize: '12px',
-  lineHeight: '18px',
-  fontWeight: '500',
+  fontFamily: 'IBM Plex Sans',
+  fontSize: '14px',
+  lineHeight: '21px',
+  fontWeight: '400',
   color: '#ffffff',
   listStyle: 'inside',
   marginLeft: '4px',
 })
 
 export const HintList = styled('li', {
-  fontFamily: 'JetBrains Mono',
-  fontSize: '12px',
-  lineHeight: '18px',
-  fontWeight: '500',
+  fontFamily: 'IBM Plex Sans',
+  fontSize: '14px',
+  lineHeight: '21px',
+  fontWeight: '400',
   color: '#ffffff',
 })
