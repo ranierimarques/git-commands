@@ -35,5 +35,6 @@ export const globalStyles = globalCss({
   },
   html: {
     colorScheme: 'dark',
+    scrollBehavior: 'smooth'
   },
 })
