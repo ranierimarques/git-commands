@@ -21,7 +21,8 @@ export const StyledContent = styled(TooltipPrimitive.Content, {
 
   padding: '12px 14px',
   borderRadius: '4px',
-  filter: 'drop-shadow(0px 8px 15px rgba(0, 0, 0, 0.15))',
+  boxShadow:
+    'rgba(0, 0, 0, 0.6) 0px 10px 38px -10px, rgba(0, 0, 0, 0.6) 0px 10px 20px -15px',
 })
 
 export const StyledTrigger = styled(TooltipPrimitive.Trigger, {
@@ -30,8 +31,8 @@ export const StyledTrigger = styled(TooltipPrimitive.Trigger, {
   lineHeight: '20px',
   fontWeight: '400',
   color: 'white',
-  '&:focus': {
-    // outline: '1px dashed #4465DB',
-    // outlineOffset: '1.5px',
-  },
+  // '&:focus': {
+  //   outline: '1px dashed #4465DB',
+  //   outlineOffset: '1.5px',
+  // },
 })
